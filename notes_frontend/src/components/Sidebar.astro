@@ -1,0 +1,53 @@
+---
+/**
+ * Sidebar.astro - Minimal sidebar for navigation (expandable for future sections/tags)
+ * Currently only "All Notes"
+ */
+const { selected = 'all' } = Astro.props;
+---
+<aside class="sidebar">
+  <nav class="sidebar-nav">
+    <button class="sidebar-button {selected === 'all' ? 'active' : ''}" aria-current="page">
+      <svg height="20" width="20" fill="none" viewBox="0 0 24 24" style="margin-right:8px;vertical-align:middle"><rect x="3" y="5" width="18" height="14" rx="3" stroke="var(--color-primary)" stroke-width="2" fill="#fff"/></svg>
+      All Notes
+    </button>
+    <!-- For expansion: Add categories/tags here -->
+  </nav>
+</aside>
+<style>
+  .sidebar {
+    width: var(--sidebar-width);
+    background: var(--color-sidebar);
+    padding: 2rem 1rem 1rem 1rem;
+    border-right: 1px solid var(--color-border);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .sidebar-button {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    border-radius: var(--radius);
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 1rem;
+    gap: 7px;
+    transition: background 0.13s, color 0.13s;
+  }
+  .sidebar-button.active,
+  .sidebar-button:focus,
+  .sidebar-button:hover {
+    background: var(--color-primary);
+    color: #fff;
+    outline: none;
+  }
+</style>

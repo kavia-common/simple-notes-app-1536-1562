@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Sidebar from '../components/Sidebar.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Enable client:only React for dynamic UI state/logic
+const { default: NoteList } = await import('../components/NoteList.tsx');
+const { default: NoteDetails } = await import('../components/NoteDetails.tsx');
+---
+
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Sidebar from '../components/Sidebar.astro';
+import NotesApp from '../components/NotesApp.tsx';
 ---
 
 <Layout>
-	<Welcome />
+  <div class="app-root">
+    <TopNav />
+    <div style="display:flex; flex:1; min-height:0;">
+      <Sidebar selected="all" />
+      <div class="main" style="flex:1; min-width:0; display: flex;">
+        <NotesApp client:load />
+      </div>
+    </div>
+  </div>
 </Layout>
