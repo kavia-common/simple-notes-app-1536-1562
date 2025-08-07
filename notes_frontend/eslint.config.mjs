@@ -6,6 +6,16 @@ import tseslint from 'typescript-eslint';
 export default [
   js.configs.recommended,
 
+  // Exclude generated/compiled files and Astro type/content files
+  {
+    ignores: [
+      'dist/**',
+      '.astro/**',
+      '.astro/content.d.ts',
+      '**/content.d.ts',
+    ],
+  },
+
   // TypeScript support
   ...tseslint.configs.recommended,
 

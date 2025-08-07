@@ -2,16 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import Sidebar from '../components/Sidebar.astro';
-
-// Enable client:only React for dynamic UI state/logic
-const { default: NoteList } = await import('../components/NoteList.tsx');
-const { default: NoteDetails } = await import('../components/NoteDetails.tsx');
----
-
----
-import Layout from '../layouts/Layout.astro';
-import TopNav from '../components/TopNav.astro';
-import Sidebar from '../components/Sidebar.astro';
 import NotesApp from '../components/NotesApp.tsx';
 ---
 
