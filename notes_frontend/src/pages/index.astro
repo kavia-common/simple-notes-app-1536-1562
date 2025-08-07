@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Sidebar from '../components/Sidebar.astro';
+import NotesApp from '../components/NotesApp.tsx';
+---
+
+<Layout>
+  <div class="app-root">
+    <TopNav />
+    <div style="display:flex; flex:1; min-height:0;">
+      <Sidebar selected="all" />
+      <div class="main" style="flex:1; min-width:0; display: flex;">
+        <NotesApp client:load />
+      </div>
+    </div>
+  </div>
+</Layout>
